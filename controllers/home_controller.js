@@ -1,6 +1,11 @@
 module.exports.home = function(req, res){
-    return res.end('<h1>Express is up for KinApp</h1>');
+
+    return res.render('home', {
+        title: "Home"
+    });
 }
 module.exports.search = function(req, res){
-    return res.end('<h1>Home search</h1>');
+    return res.render('search', {
+        title: "search"
+    });
 }

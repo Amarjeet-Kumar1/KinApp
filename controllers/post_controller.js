@@ -1,3 +1,5 @@
 module.exports.first = function(req, res){
-    return res.end('<h1> User First Post </h1>');
+    return res.render('first_post',{
+        title: "post"
+    });
 }
