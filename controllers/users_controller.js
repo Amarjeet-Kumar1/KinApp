@@ -11,7 +11,7 @@ module.exports.signUp = function(req, res){
     });
 }
 
-module.exports.singIn = function(req, res){
+module.exports.signIn = function(req, res){
     return res.render('user_sign_in', {
         title: "KinApp | Sign In"
     });
@@ -35,5 +35,15 @@ module.exports.create = function(req, res){
 }
 
 module.exports.createSession = function(req, res){
+    return res.redirect('/');
+}
+
+module.exports.destroySession = function(req, res,){
+    req.logout(function(err){
+        if(err){
+            return console.log(err);
+        }
+        return res.redirect('/');
+    });
     
 }
