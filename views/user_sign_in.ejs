@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>
+            <%=title%>
+        </title>
+    </head>
+    <body>
+        <style>
+            .container{
+                width: 60%;
+                min-width: 300px;
+                height: 80%;
+                min-height: 500px;
+                margin: auto;
+            }
+            input, a{
+                display: block;
+                margin: 2%;
+            }
+            
+        </style>
+        
+        <div class="container"  >
+            <h1><%=title%></h1>
+            <form action="/users/create-session" method="post">
+
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <input type="password" name="password" id="password" placeholder="password" required>
+                <input type="submit" value="Sign In">
+                <a href="/forger-password">forgot password?</a>
+                <a href="sign-up">Create new accout</a>
+            </form>
+        </div>
+    </body>
+</html>
