@@ -22,7 +22,9 @@
       <li>
         <h6><%= post.user.name %></h6>
         <p><%= post.content %></p>
-
+        <%if(locals.user && locals.user.id == post.user.id){%>
+        <button><a href="/posts/destroy/<%=post._id%>">Delete</a></button>
+        <%}%>
         <div id="post-comment">
           <%if(locals.user){%>
           <form action="/comments/create/" method="post">
@@ -35,10 +37,15 @@
 
           <div class="post-comments-list">
             <ul id="post-comments-<%= post._id%>">
+              
               <% for ( comment of post.comments){%>
+                <li>
                 <small><%= comment.user.name%></small>
                 <p><%= comment.comment %></p>
-
+                <%if(locals.user && locals.user.id == comment.user.id){%>
+                  <button><a href="/comments/destroy/<%=comment._id%>">Delete</a></button>
+                  <%}%>
+                </li>
                 <%}%>
             </ul>
           </div>
