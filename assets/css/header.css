@@ -10,6 +10,7 @@ header {
 header div {
   width: fit-content;
   margin-left: 1vw;
+  font-size: larger;
 }
 
 header div {
@@ -25,6 +26,7 @@ header div ul li {
 
 header div ul li a {
   text-decoration: none;
+  font-size: large;
 }
 
 header div ul li a:hover {

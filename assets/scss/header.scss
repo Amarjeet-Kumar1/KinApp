@@ -8,6 +8,7 @@ header{
     div{
         width: fit-content;
         margin-left: 1vw;
+        font-size: larger;
     }
     div{
         width: fit-content;
@@ -19,6 +20,7 @@ header{
                 margin-left: 1vw;
                 a{
                     text-decoration: none;
+                    font-size: large;
                     &:hover{
                         color: green;
                     }
