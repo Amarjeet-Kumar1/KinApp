@@ -1,14 +1,17 @@
 <header>
-    Page Header 
-
+    <div>
+        KinApp
+    </div> 
+    <div>
     <ul>
-        <% if(locals.user){ %> 
+        <% if(locals.user){ %>
+        
             <li>
                 <a href="/users/profile"><%= user.name %></a>
             </li>
             <li>
                 <a href="/users/sign-out">Sign Out</a>
-            </li>
+            </li> 
 
         <%} else { %> 
             <li>
@@ -17,9 +20,9 @@
             <li>
                 <a href="/users/sign-up">Sign Up</a>
             </li>
-        
         <%} %>
 
 
     </ul>
+    </div>
 </header>

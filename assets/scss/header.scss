@@ -1,0 +1,29 @@
+header{
+    width: 100vw;
+    height: 8vh;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div{
+        width: fit-content;
+        margin-left: 1vw;
+    }
+    div{
+        width: fit-content;
+        margin-right: 1vw;
+        ul{
+            li{
+                list-style-type: none;
+                display: inline-block;
+                margin-left: 1vw;
+                a{
+                    text-decoration: none;
+                    &:hover{
+                        color: green;
+                    }
+                }
+            }
+        }
+    }
+}

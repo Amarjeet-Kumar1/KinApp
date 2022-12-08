@@ -1,0 +1,32 @@
+header {
+  width: 100vw;
+  height: 8vh;
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header div {
+  width: fit-content;
+  margin-left: 1vw;
+}
+
+header div {
+  width: fit-content;
+  margin-right: 1vw;
+}
+
+header div ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin-left: 1vw;
+}
+
+header div ul li a {
+  text-decoration: none;
+}
+
+header div ul li a:hover {
+  color: green;
+}

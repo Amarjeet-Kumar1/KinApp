@@ -1,0 +1,28 @@
+footer{
+    background-color: antiquewhite;
+    width: 100vw;
+    height: fit-content;
+    div{
+        a{
+            text-decoration: none;
+            margin: 10px;
+            color: black;
+            font-size: large;
+            &:hover{
+                color: green;
+            }
+        }
+    }
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+            margin: 0%;
+            font-size: large;
+            margin-bottom: 10px;
+        }
+    }
+       
+        
+}
