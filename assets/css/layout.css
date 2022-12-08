@@ -1,3 +1,7 @@
 body {
   margin: 0%;
 }
+
+body #layout-main {
+  margin-bottom: 10vh;
+}
