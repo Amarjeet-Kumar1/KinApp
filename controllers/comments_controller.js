@@ -27,16 +27,16 @@ module.exports.create = function(req, res){
 }
 
 module.exports.destroy = function(req, res){
-    Comment.findById(req.params.id, function(err, comment){
+    Comment.findById(req.params.commentId, function(err, comment){
         if(err){console.log('error in finding comment'); return;}
-        if(comment.user == req.user.id){
+        if((comment.user == req.user.id) || (req.params.postUserId == req.user.id)){
             let postId = comment.post;
             let userId = comment.user;
             comment.remove();
-            Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}}, function(err){
+            Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.commentId}}, function(err){
                 if(err){console.log('error in finding comment id in post'); return;}
             });
-            User.findByIdAndUpdate(userId, { $pull: {comments: req.params.id}}, function(err){
+            User.findByIdAndUpdate(userId, { $pull: {comments: req.params.commentId}}, function(err){
                 if(err){console.log('error in finding comment id in user'); return;}
             });
             return res.redirect('back');
