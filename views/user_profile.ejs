@@ -1,4 +1,14 @@
 
-<h1> User Profile <%= title %></h1>
-<p><%= user.name %></p>
-<p><%= user.email %></p>
+<h1> KinApp | <%= title %></h1>
+
+
+<% if(profile_user.id == locals.user.id){%>
+    <form action="/users/update/<%= profile_user.id %>" method="post" >
+        <input type="text" name="name" id="name" placeholder="Your Name" value="<%=profile_user.name%>" required>
+        <input type="email" name="email" id="email" placeholder="Your Email" value="<%=profile_user.email%>" required>
+        <input type="submit" value="Update">
+    </form>
+<%} else {%>
+    <p><%= profile_user.name %></p>
+    <p><%= profile_user.email %></p>
+<%}%>

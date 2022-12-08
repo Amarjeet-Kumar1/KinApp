@@ -14,10 +14,15 @@ module.exports.home = function(req, res){
             }
         }).
         exec(function(err, posts){
-            return res.render('home', {
-                title: "KinApp | Home",
-                posts: posts,
+            User.find({}, function(err, users){
+                if(err){console.log('error'); return;}
+                return res.render('home', {
+                    title: "KinApp | Home",
+                    posts: posts,
+                    all_user: users
+                });
             });
+            
         });
         
         

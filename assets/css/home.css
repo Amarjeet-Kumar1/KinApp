@@ -1,3 +1,14 @@
-h1 {
-  font-size: 50px;
+#home-container {
+  display: flex;
+}
+
+#home-container #feed-posts {
+  width: 70vw;
+  padding: 10px;
+}
+
+#home-container #friends-list {
+  width: 30vw;
+  padding: 10px;
+  border-left: 1px solid lightgray;
 }
