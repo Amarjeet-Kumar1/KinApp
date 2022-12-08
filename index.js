@@ -28,19 +28,19 @@ app.use(cookieParser());
 
 //use static file
 app.use(express.static('./assets'));
-
+ 
 //use express layout
 app.use(expressLayouts);
-
+  
 //set default layout
 app.set('layout', './layouts/layout');
 
 //extract styles and scripts from subpages to layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
-
-
-
+ 
+  
+  
 
 //set up view engine
 app.set('view engine', 'ejs');
@@ -65,7 +65,7 @@ app.use(session({
     )
 
 }));
-
+ 
 
 app.use(passport.initialize());
 app.use(passport.session()); 
@@ -74,8 +74,8 @@ app.use(passport.setAuthenticatedUser);
 //use express router after passport
 app.use('/', require('./routes'));
 
-
-
+ 
+ 
 
 
 app.listen(port, function(err){
