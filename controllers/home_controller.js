@@ -4,26 +4,27 @@ const Comment = require('../models/comment');
 const { populate } = require('../models/post');
 
 
-module.exports.home = function(req, res){
-        Post.find({}).
+module.exports.home = async function(req, res){
+    try{
+        let posts = await Post.find({}).
         populate('user').
         populate({
             path: 'comments',
             populate: {
                 path: 'user'
             }
-        }).
-        exec(function(err, posts){
-            User.find({}, function(err, users){
-                if(err){console.log('error'); return;}
-                return res.render('home', {
-                    title: "KinApp | Home",
-                    posts: posts,
-                    all_user: users
-                });
-            });
-            
         });
+        let users = await User.find({});
+
+        return res.render('home', {
+            title: "KinApp | Home",
+            posts: posts,
+            all_user: users
+        });
+    } catch(err){
+        console.log('Error', err);
+        return;
+    }
         
         
 }
