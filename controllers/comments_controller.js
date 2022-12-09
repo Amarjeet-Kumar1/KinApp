@@ -11,6 +11,7 @@ module.exports.create = async function(req, res){
                 post: req.body.post,
                 user: req.user._id
             });
+                req.flash('success', 'Comment Added!');
                 post.comments.push(comment);
                 post.save();
                 user.comments.push(comment);
@@ -19,7 +20,7 @@ module.exports.create = async function(req, res){
         }
     } catch (err) {
         console.log('Error', err);
-        return;
+        return res.redirect('back');
     }    
 }
 
@@ -32,13 +33,15 @@ module.exports.destroy = async function(req, res){
             comment.remove();
             await Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.commentId}});
             await User.findByIdAndUpdate(userId, { $pull: {comments: req.params.commentId}});
+            req.flash('success', 'Comment deleted!');
             return res.redirect('back');
         } else {
+            req.flash('error', 'You cannot delete this comment');
             return res.redirect('back');
         }
-    } catch (error) {
-        console.log('Error', error);
-        return;
+    } catch (err) {
+        console.log('Error', err);
+        return res.redirect('back');
     }
     
     

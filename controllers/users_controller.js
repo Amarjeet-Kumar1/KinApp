@@ -13,10 +13,11 @@ module.exports.update = function(req, res){
     if(req.user.id == req.params.id){
         User.findByIdAndUpdate(req.params.id, req.body ,function(err, user){
             if(err){console.log('error in updating'); return;}
+            req.flash('success', 'Profile Updated!');
             return res.redirect('back');
         });
     } else {
-        return res.status(401).send('You are an idiot');
+        return res.status(401).send('You cannot update');
     }
 }
 
@@ -32,24 +33,30 @@ module.exports.signIn = function(req, res){
     });
 }
 
-module.exports.create = function(req, res){
+module.exports.create = async function(req, res){
     if (req.body.password != req.body.confirm_password){
+        req.flash('error', 'Password doesn\'t match!!');
         return res.redirect('back');
     }
-    User.findOne({email: req.body.email}, function(err, user){
-        if(err){console.log('Error in finding user in siging up'); return;}
-        if(!user){
-            User.create(req.body, function(err, user){
-                if(err){console.log('Error in creating user in siging up'); return;}
-                return res.redirect('/users/sign-in');
-            });
+    try {
+        let userA = await User.findOne({email: req.body.email});
+        if(!userA){
+            let user = await User.create(req.body);
+            req.flash('success', 'User created!');
+            return res.redirect('/users/sign-in');
         } else {
-            return res.redirect('back');
+            req.flash('error', 'User already exists, Please Sign in');
+            return res.redirect('/users/sign-in');
         }
-    });
+    } catch (err) {
+        console.log('Error', err);
+        return res.redirect('back');
+    }
+    
 }
 
 module.exports.createSession = function(req, res){
+    req.flash('success', 'Logged in Successfully');
     return res.redirect('/');
 }
 
@@ -58,6 +65,7 @@ module.exports.destroySession = function(req, res,){
         if(err){
             return console.log(err);
         }
+        req.flash('success', 'You have logged out');
         return res.redirect('/');
     });
     
