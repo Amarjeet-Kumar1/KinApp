@@ -1,7 +1,13 @@
 <footer>
     <div>
         <a href="/">Home</a>
-        <a href="/users/profile">Profile</a>
+        <a href="
+        <% if(locals.user){ %>
+            /users/profile/<%=locals.user.id%>
+        <%} else {%>
+            /users/sign-in
+        <%}%>
+        ">Profile</a>
     </div>
     <div>
         <p>&#169; KinApp.com All right reserved</p>

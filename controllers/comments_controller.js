@@ -11,11 +11,12 @@ module.exports.create = async function(req, res){
                 post: req.body.post,
                 user: req.user._id
             });
-                req.flash('success', 'Comment Added!');
+                
                 post.comments.push(comment);
                 post.save();
                 user.comments.push(comment);
                 user.save();
+                req.flash('success', 'Comment Added!');
                 return res.redirect('back');
         }
     } catch (err) {
@@ -36,7 +37,7 @@ module.exports.destroy = async function(req, res){
             req.flash('success', 'Comment deleted!');
             return res.redirect('back');
         } else {
-            req.flash('error', 'You cannot delete this comment');
+            req.flash('error', 'Unauthorized');
             return res.redirect('back');
         }
     } catch (err) {

@@ -17,7 +17,8 @@ module.exports.update = function(req, res){
             return res.redirect('back');
         });
     } else {
-        return res.status(401).send('You cannot update');
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('unauthorized!');
     }
 }
 
