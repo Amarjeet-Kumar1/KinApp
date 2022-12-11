@@ -1,11 +1,13 @@
 
-<h1> KinApp | <%= title %></h1>
+<img src="<%= user.avatar %>" alt="<%=user.name%>" width="100">
 
 
 <% if(profile_user.id == locals.user.id){%>
-    <form action="/users/update/<%= profile_user.id %>" method="post" >
+    <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="post" >
         <input type="text" name="name" id="name" placeholder="Your Name" value="<%=profile_user.name%>" required>
         <input type="email" name="email" id="email" placeholder="Your Email" value="<%=profile_user.email%>" required>
+        
+        <input type="file" name="avatar" id="avatar" placeholder="Profile Picture">
         <input type="submit" value="Update">
     </form>
 <%} else {%>
