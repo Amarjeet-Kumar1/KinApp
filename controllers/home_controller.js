@@ -1,7 +1,7 @@
 const Post = require('../models/post');
 const User = require('../models/user');
 const Comment = require('../models/comment');
-const { populate } = require('../models/post');
+
 
 
 module.exports.home = async function(req, res){
@@ -11,6 +11,7 @@ module.exports.home = async function(req, res){
         populate('user').
         populate({
             path: 'comments',
+            options: {sort: {'createdAt': -1}},
             populate: {
                 path: 'user'
             }

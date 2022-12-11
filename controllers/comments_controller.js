@@ -2,6 +2,7 @@ const Comment = require('../models/comment');
 const Post = require('../models/post');
 const User = require('../models/user');
 module.exports.create = async function(req, res){
+    
     try {
         let user = await User.findById(req.user._id);
         let post = await Post.findById(req.body.post);
@@ -11,11 +12,21 @@ module.exports.create = async function(req, res){
                 post: req.body.post,
                 user: req.user._id
             });
+            post.comments.push(comment);
+            await post.save();
+            user.comments.push(comment);
+            await user.save();
+            if(req.xhr){
+                comment = await comment.populate('user', 'name');
+                return res.status(200).json({
+                    data: {
+                        comment: comment,
+                    }, 
+                    message: "Comment created"
+                });
+            }
                 
-                post.comments.push(comment);
-                post.save();
-                user.comments.push(comment);
-                user.save();
+                
                 req.flash('success', 'Comment Added!');
                 return res.redirect('back');
         }
@@ -34,6 +45,16 @@ module.exports.destroy = async function(req, res){
             comment.remove();
             await Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.commentId}});
             await User.findByIdAndUpdate(userId, { $pull: {comments: req.params.commentId}});
+
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        comment_id: req.params.commentId
+                    },
+                    message: "Comment Deleted"
+                });
+            }
+
             req.flash('success', 'Comment deleted!');
             return res.redirect('back');
         } else {
