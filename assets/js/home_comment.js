@@ -34,6 +34,7 @@ class PostComments{
                 success: function(data){
                     let newComment = pSelf.newCommentDom(data.data.comment);
                     $(`#post-comments-${postId}`).prepend(newComment);
+                    $('input:text').val("");
                     pSelf.deleteComment($(' .delete-comment-button', newComment));
 
                     new Noty({
@@ -58,12 +59,26 @@ class PostComments{
     newCommentDom(comment){
         // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
         return $(`<li id="comment-${comment._id}">
-        <small>${comment.user.name}</small>
-        <p>${comment.comment}</p>
-        
-          <button><a class="delete-comment-button" href="/comments/destroy/${comment._id}/${comment.user.id}">Delete</a></button>
+        <div class="comment-avatar-post">
+        <div class="comment-user-avatar">
+          <div class="comment-avatar">
+            <a href="/users/profile/${comment.user._id}">
+            <img src="${comment.user.avatar}" alt="${comment.user.name}">
+          </a>
+          </div>
+        </div>
+        <div class="comment-content-container">
+        <div class="comment-user-delete">
+          <p class="comment-user"><a href="/users/profile/${comment.user._id}">${comment.user.name}</a></p>
           
-      </li>`);
+            <button><a class="delete-comment-button" href="/comments/destroy/${comment._id}/${comment.user.id}">Delete</a></button>
+            
+          </div>
+          <p class="comment-content">${comment.comment}</p>
+        </div>
+          
+        </div><hr>
+        </li>`);
     }
 
 

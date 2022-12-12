@@ -1,34 +1,46 @@
 header {
   width: 100vw;
-  height: 8vh;
+  height: 6vh;
   background-color: antiquewhite;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  position: fixed;
+  top: 0%;
 }
 
-header div {
+header #header-container {
+  width: 60vw;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header #header-container div {
   width: fit-content;
   margin-left: 1vw;
   font-size: larger;
 }
 
-header div {
+header #header-container div a {
+  text-decoration: none;
+}
+
+header #header-container div {
   width: fit-content;
   margin-right: 1vw;
 }
 
-header div ul li {
+header #header-container div ul li {
   list-style-type: none;
   display: inline-block;
   margin-left: 1vw;
 }
 
-header div ul li a {
+header #header-container div ul li a {
   text-decoration: none;
   font-size: large;
 }
 
-header div ul li a:hover {
+header #header-container div ul li a:hover {
   color: green;
 }

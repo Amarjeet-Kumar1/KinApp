@@ -1,18 +1,21 @@
 <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/post.css">
+<link rel="stylesheet" href="/css/comment.css">
 <div id="home-container">
   <section id="feed-posts">
-    <h4>Posts</h4>
     <%if(locals.user){%>
       <!-- action="/posts/create" -->
       <form  id="new-post-form" method="POST">
-        <textarea name="content" id="new-post" cols="30" rows="3" placeholder="Type Here..." required></textarea>
+        <textarea name="content" id="new-post"  cols="30" rows="3" placeholder="Type Here..." required></textarea>
         <input type="submit" value="Post" />
       </form>
+      <hr>
       <%}%>
         <div id="posts-list-container">
           <ul>
             <%for( post of posts){ %>
               <%- include('./partials/_post.ejs'); %>
+              
                 <%}%>
           </ul>
         </div>

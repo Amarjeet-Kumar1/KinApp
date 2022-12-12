@@ -17,7 +17,7 @@ module.exports.create = async function(req, res){
             user.comments.push(comment);
             await user.save();
             if(req.xhr){
-                comment = await comment.populate('user', 'name');
+                comment = await comment.populate('user', 'name avatar');
                 return res.status(200).json({
                     data: {
                         comment: comment,

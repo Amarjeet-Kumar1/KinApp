@@ -3,12 +3,50 @@
 }
 
 #home-container #feed-posts {
-  width: 70vw;
+  width: 70%;
   padding: 10px;
 }
 
+#home-container #feed-posts hr {
+  margin: auto;
+}
+
+#home-container #feed-posts #new-post-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#home-container #feed-posts #new-post-form textarea {
+  width: 70%;
+  border: none;
+  padding: 10px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+#home-container #feed-posts #new-post-form textarea:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+#home-container #feed-posts #new-post-form input {
+  font-size: large;
+  font-weight: bold;
+  padding: 0.4em;
+  border: 1px solid #edc492;
+  background-color: antiquewhite;
+}
+
+#home-container #feed-posts #new-post-form input:hover {
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
 #home-container #friends-list {
-  width: 30vw;
+  width: 30%;
   padding: 10px;
   border-left: 1px solid lightgray;
 }

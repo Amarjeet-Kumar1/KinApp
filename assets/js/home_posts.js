@@ -5,7 +5,7 @@
 
       newPostForm.submit(function(e){
           e.preventDefault();
-
+          
           $.ajax({
               type: 'POST',
               url: '/posts/create',
@@ -13,6 +13,7 @@
               success: function(data){
                   let newPost = newPostDom(data.data.post);
                   $('#posts-list-container>ul').prepend(newPost);
+                  $('textarea').val("");
                   deletePost($(' .delete-post-button', newPost));
 
                   // call the create comment class
@@ -37,33 +38,50 @@
 
   // method to create a post in DOM
   let newPostDom = function(post){
-      return $(`<li id="post-${post._id}">
-      <p>
-        <small> ${post.user.name} </small>
-        <p>${post.content}</p>
-       
+    return $(`<li id="post-${post._id}">
+    <div class="avatar-post">
+    <div class="user-avatar">
+      <div class="avatar">
+        <a href="/users/profile/${post.user._id}">
+        <img src="${post.user.avatar}" alt="${post.user.name}">
+      </a>
+      </div>
+    </div>
+    <div class="post-content-container">
+      <div>
+    <div class="post-user-delete">
+      <p class="user-name"><a href="/users/profile/${post.user._id}">${post.user.name}</a></p>
+      
         <button ><a class="delete-post-button" href="/posts/destroy/${post._id}">Delete</a></button>
         
-      </p>
-        <div id="post-comment">
-         
-          <form id="post-${ post._id }-comments-form" action="/comments/create" method="POST">
-            <h6>Add Comment</h6>
-            <input type="text" name="comment" id="comment" placeholder="type here..." required/>
-            <input type="hidden" name="post" value="${post._id}">
-            <button type="submit">Add</button>
-          </form>
-          
-    
-          <div class="post-comments-list">
-            <ul id="post-comments-${post._id}">
-              
-              
-            </ul>
-          </div>
-        </div>
+      
+    </div>
+    <p class="post-content">${post.content}</p>
+    </div>
+      <div class="post-comment-container">
+        <div>
         
-      </li>`)
+        <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
+          
+          <input type="text" name="comment" id="comment" placeholder="Add Comment...." required>
+          <input type="hidden" name="post" value="${post._id}">
+          <button type="submit">Add</button>
+        </form>
+        
+      </div>
+  
+        <div class="post-comments-list">
+          <ul id="post-comments-${post._id}">
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr> </li>`);
+
+     
   }
 
 

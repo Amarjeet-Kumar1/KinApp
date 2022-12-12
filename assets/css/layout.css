@@ -3,5 +3,8 @@ body {
 }
 
 body #layout-main {
-  margin-bottom: 10vh;
+  width: 60vw;
+  margin: auto;
+  margin-top: 8vh;
+  border: 1px solid lightgray;
 }
