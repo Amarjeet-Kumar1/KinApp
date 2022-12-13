@@ -36,7 +36,7 @@ passport.serializeUser(function(user, done){
 });
 
 
-//deserailizing the user from the key in teh cookies
+//deserailizing the user from the key in the cookies
 passport.deserializeUser(function(id, done){
     User.findById(id, function(err, user){
         if(err){

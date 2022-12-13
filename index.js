@@ -9,6 +9,7 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const passportJWT = require('./config/possport-jwt-strategy');
 
 const MongoStore = require('connect-mongo');
  
@@ -92,5 +93,6 @@ app.listen(port, function(err){
     if(err){
         console.log(`Error in running the server :${err}`);
     }
+    
     console.log(`Server is running on port: ${port}`);
 });
