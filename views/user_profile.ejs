@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/comment.css">
 <section id="user-profile">
     <div id="user-avatar">
-        <img src="<%= user.avatar %>" alt="<%=user.name%>" width="100">
+        <img id="user-avatar-img" src="<%= profile_user.avatar %>"  alt="<%=profile_user.name%>" width="100">
     </div>
     <div id="user-details">
         <p><%= profile_user.name %></p>
@@ -23,7 +23,7 @@
             <button id="cancel-button">Cancel</button>
         </form>
         <%} else {%>
-            <p>Not Autherized</p>
+            <p>Unautherized</p>
             <%}%>
     </div>
 

@@ -15,4 +15,4 @@ exports.newComment = (comment) => {
         console.log('Message send', info);
         return;
     } );
-}
+} 

@@ -18,7 +18,7 @@ module.exports.profile = async function(req, res){
             }
         });
          
-        let user = await User.findOne({_id : req.params.id}, 'name email');
+        let user = await User.findOne({_id : req.params.id}, 'name email avatar');
         return res.render('user_profile', {
             title: "User Profile",
             profile_user: user,
@@ -74,7 +74,7 @@ module.exports.signUp = function(req, res){
         title: "KinApp | Sign Up"
     });
 }
-
+ 
 module.exports.signIn = function(req, res){
     return res.render('user_sign_in', {
         title: "KinApp | Sign In"
