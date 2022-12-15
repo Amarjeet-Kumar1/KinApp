@@ -11,6 +11,7 @@ router.get('/sign-out', usersController.destroySession);
 
 router.post('/create', usersController.create);
 router.post('/update/:id',passport.checkAuthentication, usersController.update);
+router.use('/forgot-password', require('./reset_password'));
 
 
 //use passport as a middleware authenticate
