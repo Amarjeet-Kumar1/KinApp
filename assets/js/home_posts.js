@@ -1,4 +1,11 @@
 {   
+  
+ 
+   
+  
+
+ 
+  
   // method to submit the form data for new post using AJAX
   let createPost = function(){
       let newPostForm = $('#new-post-form');
@@ -27,6 +34,8 @@
                       timeout: 1500
                       
                   }).show();
+
+                  new ToggleLike($(' .like-button-toggle', newPost));
 
               }, error: function(error){
                   console.log(error.responseText);
@@ -58,6 +67,11 @@
     </div>
     <p class="post-content">${post.content}</p>
     </div>
+    <div class="post-like-container">
+    
+    <button class="like-button"><a class="like-button-toggle" href="/likes/toggle/?id=${post._id}&type=Post" >0 Likes</a></button>
+    
+  </div>
       <div class="post-comment-container">
         <div>
         
@@ -132,4 +146,5 @@
 
   createPost();
   convertPostsToAjax();
+  // likeFunction();
 }

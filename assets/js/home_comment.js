@@ -46,6 +46,8 @@ class PostComments{
                         
                     }).show();
 
+                    new ToggleLike($(' .like-button-toggle', newComment));
+
                 }, error: function(error){
                     console.log(error.responseText);
                 }
@@ -76,6 +78,11 @@ class PostComments{
           </div>
           <p class="comment-content">${comment.comment}</p>
         </div>
+        <div class="comment-like-container">
+   
+      <button class="like-button"><a class="like-button-toggle" href="/likes/toggle/?id=${comment._id}&type=Comment" >0 Likes</a></button>
+      
+  </div>
           
         </div><hr>
         </li>`);

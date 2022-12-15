@@ -18,7 +18,17 @@
     <!-- <%- include('../partials/_footer.ejs'); %> -->
 
     <%- script %>
+    <script src="/js/home_comment.js"></script>
+    <script src="/js/home_posts.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/like-toggle.js"></script>
     <script>
+        $('.like-button-toggle').each(function(){
+            let self = this;
+            let toggleLike = new ToggleLike(self);
+
+        });
+
         <% if(flash.success && flash.success.length > 0){ %>
             new Noty({
                 theme: 'relax',
@@ -38,6 +48,7 @@
             }).show();
         <% } %>
     </script>
+    
 
 </body>
 </html>
