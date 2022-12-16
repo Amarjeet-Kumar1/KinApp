@@ -9,6 +9,22 @@
         <p><%= profile_user.email %></p>
         <% if(profile_user.id == locals.user.id){%>
             <button id="edit-profile">Edit Profile</button>
+        <%} else if(receiver){%>
+                    <%if(!receiver.accepted){%>
+                        <button><a href="/users/friendship/cancel-request/?id=<%=receiver._id%>">Cancel Request</a></button>
+                    <%} else {%>
+                        <button><a href="/users/friendship/remove-friend/?id=<%=receiver._id%>">Remove</a></button>
+                    <%}%>
+        <%} else if(sender ){ %>
+                    <%if(!sender.accepted){%>
+                        <button><a href="/users/friendship/accept-request/?id=<%=sender._id%>">Accept Request</a></button>
+                        <button><a href="/users/friendship/cancel-request/?id=<%=sender._id%>">Cancel Request</a></button>
+
+                    <%} else {%>
+                        <button><a href="/users/friendship/remove-friend/?id=<%=sender._id%>">Remove</a></button>
+                    <%}%>
+        <%} else {%>
+                <button><a href="/users/friendship/send-request/?to=<%=profile_user.id%>">Send Request</a></button>
             <%}%>
     </div>
     
@@ -33,7 +49,7 @@
     <h3>Recent Posts</h3>
     <div id="posts-list-container">
         <ul>
-            <%for( post of user_post){ %>
+            <%for( post of profile_user.posts){ %>
                 <%- include('./partials/_post.ejs'); %>
                 
                   <%}%>

@@ -1,28 +1,55 @@
 const User = require('../models/user');
 const Post = require('../models/post');
+const Friendship = require('../models/friendship');
 
 const fs = require('fs');
 const path = require('path');
+const { fileURLToPath } = require('url');
 
 module.exports.profile = async function(req, res){
     try {
-        let post = await Post.find({user: req.params.id}).
-        sort('-createdAt').
-        populate({path: 'user', select: 'name email avatar'}).
+        let user = await User.findOne({_id : req.params.id}, 'name email avatar posts').
         populate({
-            path: 'comments',
+            path: 'posts',
             options: {sort: {'createdAt': -1}},
-            populate: {
+            populate: [{
                 path: 'user',
                 select: 'name email avatar'
-            }
+            },
+            {
+                path: 'comments',
+                options: {sort: {'createdAt': -1}},
+                populate: {
+                    path: 'user',
+                    select: 'name email avatar'
+                }
+            }]
         });
+
+        let sender = await Friendship.findOne({from_user: req.params.id, to_user: req.user.id});
+        let receiver = await Friendship.findOne({from_user: req.user.id, to_user: req.params.id});
+        // let from_user = await User.findOne({_id: req.params.id}, 'friendship').populate({path: 'friendship', match: {from_user: req.params.id}});
+        // let to_user = await User.findOne({_id: req.params.id}, 'friendship').populate({path: 'friendship', match: {from_user: req.user.id}});
+
+        // let post = await Post.find({user: req.params.id}).
+        // sort('-createdAt').
+        // populate({path: 'user', select: 'name email avatar'}).
+        // populate({
+        //     path: 'comments',
+        //     options: {sort: {'createdAt': -1}},
+        //     populate: {
+        //         path: 'user',
+        //         select: 'name email avatar'
+        //     }
+        // });
          
-        let user = await User.findOne({_id : req.params.id}, 'name email avatar');
+        // let user = await User.findOne({_id : req.params.id}, 'name email avatar friendship').populate({path: 'friendship', match: {from_user: {$eq : req.user.id}}});
+        
         return res.render('user_profile', {
             title: "User Profile",
             profile_user: user,
-            user_post : post
+            sender: sender,
+            receiver: receiver
 
         });
     } catch (err) {

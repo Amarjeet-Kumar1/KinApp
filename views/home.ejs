@@ -24,8 +24,18 @@
     <h4>Friends</h4>
     <%if(locals.user){%>
 
+      <% for(u of friends){%>
+        <p><a href="/users/profile/<%=u._id%>">
+            <%= u.name %>
+          </a></p>
+        <%}%>
+          <%}%>
+      <hr>
+    <h4>All Users</h4>
+    <%if(locals.user){%>
+
       <% for(u of all_user){%>
-        <p><a href="/users/profile/<%=u.id%>">
+        <p><a href="/users/profile/<%=u._id%>">
             <%= u.name %>
           </a></p>
         <%}%>
