@@ -14,10 +14,9 @@
 
 #user-chat-box #chat-messages-list {
   list-style: none;
-  padding: 10px;
+  padding: 0%;
   width: 100%;
   height: 85%;
-  padding: 20px;
   overflow: auto;
 }
 
@@ -36,7 +35,6 @@
 #user-chat-box #chat-messages-list .self-message {
   text-align: right;
   padding: 5px;
-  margin-right: 20px;
 }
 
 #user-chat-box #chat-messages-list .self-message span {
