@@ -9,7 +9,7 @@ const env = require('./environment');
 //don't store client id here
 //tell passport to user a new strategy to login
 passport.use(new googleStrategy({
-       cliendID: env.google_client_id,
+       clientID: env.google_client_id,
        clientSecret: env.google_client_secret,
        callbackURL: env.google_callback_url
     },
