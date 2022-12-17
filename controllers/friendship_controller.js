@@ -8,12 +8,7 @@ module.exports.sendRequest = async function(req, res){
             to_user: req.query.to,
             accepted: false
         });
-        // await User.findByIdAndUpdate(req.user.id, {
-        //     friendship: friendship
-        // });
-        // await User.findByIdAndUpdate(req.query.to, {
-        //     friendship: friendship
-        // });
+        
         req.flash('success', 'Friend Request Sent');
         return res.redirect('back');
     } catch (err) {

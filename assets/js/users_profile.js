@@ -1,4 +1,6 @@
 {   
+    
+
     let avatar_url = $('#user-avatar-img').attr('src');
     $('#user-details').show();
     $('#edit-form').hide();

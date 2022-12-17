@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/css/home.css">
 <link rel="stylesheet" href="/css/post.css">
 <link rel="stylesheet" href="/css/comment.css">
+<link rel="stylesheet" href="/css/chat_box.css">
 <div id="home-container">
   <section id="feed-posts">
     <%if(locals.user){%>
@@ -20,7 +21,8 @@
           </ul>
         </div>
   </section>
-  <section id="friends-list">
+  <section id="friends-users-list">
+    <div id="friends-list">
     <h4>Friends</h4>
     <%if(locals.user){%>
 
@@ -30,7 +32,9 @@
           </a></p>
         <%}%>
           <%}%>
-      <hr>
+    </div>
+      
+    <div id="users-list">
     <h4>All Users</h4>
     <%if(locals.user){%>
 
@@ -40,7 +44,16 @@
           </a></p>
         <%}%>
           <%}%>
+    </div>
   </section>
+  <%- include('./partials/_chat_box.ejs'); %>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+<%if(locals.user){%>
+<script>
+  new ChatEngine('user-chat-box', '<%= locals.user.email %>')
+</script>
+<%}%>
 
 
