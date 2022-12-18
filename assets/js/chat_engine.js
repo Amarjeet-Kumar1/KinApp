@@ -59,8 +59,9 @@ class ChatEngine{
                     'html': data.user_email
                 }));
 
-                
+                $('#chat-message-input').val("");
                 $('#chat-messages-list').append(newMessage);
+
             });
 
             

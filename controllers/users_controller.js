@@ -72,7 +72,7 @@ module.exports.update = async function(req, res){
 
                 if(req.file){
 
-                    if(user.avatar){
+                    if(user.avatar && !user.avatar.includes("default_avatar.jpg")){
                         fs.unlinkSync(path.join(__dirname, '..', user.avatar));
                     }
 
