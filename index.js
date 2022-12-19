@@ -75,7 +75,7 @@ app.use(session({
         maxAge: (1000 * 60 * 100)
     },
     store: MongoStore.create({
-        mongoUrl: 'mongodb://127.0.0.1/kinApp_db',
+        mongoUrl: env.db_url,
         autoRemove: 'disabled'
     }, function(err){
         console.log(err || 'connet-mongodb setup ok');
