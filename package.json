@@ -6,7 +6,6 @@
   "scripts": {
     
     "start": "node ./index.js",
-    "build": "npm install&&npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod_start": "set NODE_ENV=production&&nodemon index.js"
   },
