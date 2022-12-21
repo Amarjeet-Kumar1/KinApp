@@ -19,8 +19,14 @@
   <p class="post-content"><%= post.content %></p>
   </div>
   <div class="post-like-container">
-    <%if(locals.user){%>
-    <button class="like-button"><a class="like-button-toggle" href="/likes/toggle/?id=<%= post._id%>&type=Post" ><%= post.likes.length %> Likes</a></button>
+    <% if(locals.user){%>
+    <button class="like-button 
+    
+      <% for( like of post.likes){ %>
+      <%if(like.user == locals.user.id){%>
+        liked
+        <%}}%>
+    "><a class="like-button-toggle" href="/likes/toggle/?id=<%= post._id%>&type=Post" ><%= post.likes.length %> Likes</a></button>
     <%} else {%>
     <button><%= post.likes.length %> Likes</button>
       <%}%>

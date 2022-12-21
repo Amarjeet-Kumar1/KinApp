@@ -18,7 +18,12 @@
   </div>
   <div class="comment-like-container">
     <%if(locals.user){%>
-      <button class="like-button"><a class="like-button-toggle" href="/likes/toggle/?id=<%= comment._id%>&type=Comment" ><%= comment.likes.length %> Likes</a></button>
+      <button class="like-button 
+        <% for( like of comment.likes){ %>
+        <%if(like.user == locals.user.id){%>
+          liked 
+          <%}}%>
+      "><a class="like-button-toggle" href="/likes/toggle/?id=<%= comment._id%>&type=Comment" ><%= comment.likes.length %> Likes</a></button>
       <%} else {%>
       <button><%= comment.likes.length %> Likes</button>
         <%}%>

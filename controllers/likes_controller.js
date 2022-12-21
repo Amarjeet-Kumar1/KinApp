@@ -40,8 +40,7 @@ module.exports.toggle = async function(req, res){
         if(req.xhr){
             return res.status(200).json({
                 data: {
-                    like_no: type.likes.length,
-                    liked: liked
+                    like_no: type.likes.length
                 },
                 message: 'Liked'
             });

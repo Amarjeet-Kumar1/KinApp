@@ -9,14 +9,22 @@ module.exports.home = async function(req, res){
         let posts = await Post.find({}).
         sort('-createdAt').
         populate({path: 'user', select: 'name email avatar'}).
-        populate({
+        populate([{
             path: 'comments',
             options: {sort: {'createdAt': -1}},
-            populate: {
+            populate: [{
                 path: 'user',
                 select: 'name email avatar'
+            },
+            {
+              path: 'likes'  
             }
-        });
+            ]
+        },
+        {
+            path: 'likes'
+        }
+        ]);
         let users = await User.find({}, 'name');
         let friendArray = [];
         if(req.user){
