@@ -4,9 +4,9 @@ module.exports.chatSockets = function(chatServer){
     //import socket.io and connect it to app server
     let io = require('socket.io')(chatServer, {
         //cors cross origin resource sharing
-        cors: {
-          origin: "https://effulgent-madeleine-5ae802.netlify.app:8000"
-        }
+        // cors: {
+        //   origin: "http://127.0.0.1:8000"
+        // }
       });
       //receive connection request from client and establish the connection
     io.on('connection', function(socket){
