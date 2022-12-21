@@ -5,7 +5,8 @@ const app = express();
 const port = process.env.PORT || 8000; 
 
 const expressLayouts = require('express-ejs-layouts');
-const db = require('./config/mongoose');
+// const db = require('./config/mongoose');
+const mongoose = require('mongoose');
 
 const session = require('express-session');
 const passport = require('passport');
@@ -101,10 +102,23 @@ app.use('/', require('./routes'));
  
 
 
-app.listen(port, function(err){
-    if(err){
-        console.log(`Error in running the server :${err}`);
-    }
-    
-    console.log(`Server is running on port: ${port}`);
-});
+
+const connectionParams={
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+}
+mongoose.connect(env.db_url,connectionParams)
+    .then( () => {
+        console.log('Connected to the database ');
+        app.listen(port, function(err){
+            if(err){
+                console.log(`Error in running the server :${err}`);
+            }
+            
+            console.log(`Server is running on port: ${port}`);
+        });
+    })
+    .catch( (err) => {
+        console.error(`Error connecting to the database. ${err}`);
+    });
+
