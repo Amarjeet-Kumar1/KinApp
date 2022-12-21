@@ -22,13 +22,13 @@ const flash = require('connect-flash');
 const customMware = require('./config/middleware');
  
 
-//setup the chat server to be used with socket.io
-const chatServer = require('http').createServer(app);
-//pass chatSever to this function to start socket.io in that folder
-const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
-//start chat server(http server) on 5000
-chatServer.listen(5000);
-console.log('Chat server is listening on post 5000');
+// //setup the chat server to be used with socket.io
+// const chatServer = require('http').createServer(app);
+// //pass chatSever to this function to start socket.io in that folder
+// const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+// //start chat server(http server) on 5000
+// chatServer.listen(5000);
+// console.log('Chat server is listening on post 5000');
 const path = require('path');
 
 app.use(sassMiddleware({
@@ -110,13 +110,14 @@ const connectionParams={
 mongoose.connect(env.db_url,connectionParams)
     .then( () => {
         console.log('Connected to the database ');
-        app.listen(port, function(err){
+        const httpserver = app.listen(port, function(err){
             if(err){
                 console.log(`Error in running the server :${err}`);
             }
             
             console.log(`Server is running on port: ${port}`);
         });
+        const chatSockets = require('./config/chat_sockets').chatSockets(httpserver);
     })
     .catch( (err) => {
         console.error(`Error connecting to the database. ${err}`);
