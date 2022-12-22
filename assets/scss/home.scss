@@ -61,3 +61,9 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    #friends-users-list{
+        width: 15% !important;
+    }
+}

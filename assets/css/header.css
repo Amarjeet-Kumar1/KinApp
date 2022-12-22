@@ -44,3 +44,9 @@ header #header-container div ul li a {
 header #header-container div ul li a:hover {
   color: green;
 }
+
+@media only screen and (max-width: 768px) {
+  #header-container {
+    width: 90vw !important;
+  }
+}

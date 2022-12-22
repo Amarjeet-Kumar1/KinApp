@@ -26,7 +26,7 @@ class ChatEngine{
             
             //receive confirmation from server on new joining
             self.socket.on('user_joined', function(data){
-                console.log('a user joined');
+                // console.log('a user joined');
             });
         });
             $('#send-message').click(function (e) { 
@@ -42,7 +42,7 @@ class ChatEngine{
             });
 
             self.socket.on('receive_message', function(data){
-                console.log('Message received');
+                // console.log('Message received');
 
                 let newMessage = $('<li>');
 

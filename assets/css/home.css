@@ -65,3 +65,9 @@
   overflow-y: scroll;
   border-bottom: 1px solid lightgray;
 }
+
+@media only screen and (max-width: 768px) {
+  #friends-users-list {
+    width: 15% !important;
+  }
+}
