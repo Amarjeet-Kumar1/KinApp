@@ -1,4 +1,4 @@
-
+$font-size : 15px;
 #posts-list-container {
     ul{
         padding: 0%;
@@ -13,8 +13,8 @@
                     width: 10%;
                     .avatar{
                         margin: auto;
-                        width: 2.8rem;
-                        height:2.8rem;
+                        width: calc(2.8 * $font-size);
+                        height: calc(2.8 * $font-size);
                         border-radius: 50%;
                         a img{
                             max-width: 100%;
@@ -25,7 +25,7 @@
 
                 }
                 .post-content-container{
-                    width: 88%;
+                    width: 85%;
                     div{
                         width: 100%;
 
@@ -80,4 +80,8 @@
     a{
         color: white;
     }
+}
+
+@media only screen and (max-width: 768px) {
+
 }

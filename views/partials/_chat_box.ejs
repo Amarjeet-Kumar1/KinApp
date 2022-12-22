@@ -1,5 +1,7 @@
 <%if(locals.user){%>
     <div id="user-chat-box">
+        <div id="chat-box-heading"><p>Message</p><small id="up-down">▼▼▼</small></div>
+        <div id="show-hide" class="">
         <ul id="chat-messages-list">
             <li class="others-message">
                 <span>Others Message</span>
@@ -12,6 +14,7 @@
             <input type="text" id="chat-message-input" placeholder="Type message here...">
             <button id="send-message">Send</button>
         </div>
+    </div>
     </div>
 
 

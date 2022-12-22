@@ -7,6 +7,14 @@
         hr{
             margin: auto;
         }
+        #friends-button{
+            text-align: right;
+            text-decoration: underline;
+            display: none;
+            &:hover{
+                cursor: pointer;
+            }
+        }
         #new-post-form{
             width: 100%;
             // border-bottom: 1px solid lightgray;
@@ -44,7 +52,14 @@
         width: 30%;
         height: 100vh;
         padding: 10px;
-        
+        #home-button{
+            text-align: left;
+            text-decoration: underline;
+            display: none;
+            &:hover{
+                cursor: pointer;
+            }
+        }
         #friends-list{
             width: 100%;
             height: 50%;
@@ -62,8 +77,39 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
-    #friends-users-list{
-        width: 15% !important;
+#up-down{
+    &:hover{
+        cursor: pointer;
+        color: blue;
     }
+}
+
+@media only screen and (max-width: 768px) {
+    
+    
+}
+
+@media only screen and (max-width: 480px) {
+    #feed-posts{
+        width: 90% !important;
+    }
+    #friends-users-list{
+        display: none;
+    }
+    #friends-button{
+        display: block !important;
+    }
+    .res-toggle{
+        #feed-posts{
+            display: none;
+        }
+        #friends-users-list{
+            width: 90% !important;
+            display: block !important;
+        }
+        #home-button{
+            display: block !important;
+        }
+    }
+    
 }

@@ -2,9 +2,13 @@
 <link rel="stylesheet" href="/css/post.css">
 <link rel="stylesheet" href="/css/comment.css">
 <link rel="stylesheet" href="/css/chat_box.css">
-<div id="home-container">
-  <section id="feed-posts">
+<div id="home-container" class="">
+  
+  
+
+  <section id="feed-posts" >
     <%if(locals.user){%>
+      <p id="friends-button">Friends-></p>
       <!-- action="/posts/create" -->
       <form  id="new-post-form" method="POST">
         <textarea name="content" id="new-post"  cols="30" rows="3" placeholder="Type Here..." required></textarea>
@@ -22,6 +26,7 @@
         </div>
   </section>
   <section id="friends-users-list">
+    <p id="home-button"><-Home</p>
     <div id="friends-list">
     <h4>Friends</h4>
     <%if(locals.user){%>
@@ -50,6 +55,7 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
 <script src="/js/chat_engine.js"></script>
+<script src="/js/home.js"></script>
 <%if(locals.user){%>
 <script>
   new ChatEngine('user-chat-box', '<%= locals.user.email %>')

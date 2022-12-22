@@ -16,6 +16,9 @@
     </div>
     <p class="comment-content"><%= comment.comment %></p>
   </div>
+  
+    
+  </div>
   <div class="comment-like-container">
     <%if(locals.user){%>
       <button class="like-button 
@@ -27,8 +30,6 @@
       <%} else {%>
       <button><%= comment.likes.length %> Likes</button>
         <%}%>
-  </div>
-    
   </div>
   
   <hr>
