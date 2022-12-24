@@ -22,6 +22,7 @@
   width: calc(2.8 * $font-size);
   height: calc(2.8 * $font-size);
   border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 #posts-list-container ul li .avatar-post .user-avatar .avatar a img {
@@ -56,11 +57,11 @@
   padding: 0.4em;
   border: 1px solid #edc492;
   background-color: antiquewhite;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 #posts-list-container ul li .avatar-post .post-content-container div .post-user-delete button:hover {
   background-color: #df8585;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 #posts-list-container ul li .avatar-post .post-content-container div .post-user-delete button .delete-post-button {

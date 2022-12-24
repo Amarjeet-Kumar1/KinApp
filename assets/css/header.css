@@ -49,4 +49,7 @@ header #header-container div ul li a:hover {
   #header-container {
     width: 90vw !important;
   }
+  #header-container div ul li a {
+    font-size: 1rem !important;
+  }
 }

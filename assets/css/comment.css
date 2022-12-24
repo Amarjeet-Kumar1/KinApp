@@ -38,6 +38,7 @@
   width: 2rem !important;
   height: 2rem;
   border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .post-comment-container .post-comments-list ul li .comment-avatar-post .comment-user-avatar .comment-avatar a img {
@@ -68,11 +69,11 @@
   padding: 0.2em;
   border: 1px solid #edc492;
   background-color: antiquewhite;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .post-comment-container .post-comments-list ul li .comment-avatar-post .comment-content-container .comment-user-delete button:hover {
   background-color: #df8585;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .post-comment-container .post-comments-list ul li .comment-avatar-post .comment-content-container .comment-user-delete button .delete-comment-button {

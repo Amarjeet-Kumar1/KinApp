@@ -1,87 +1,82 @@
-$font-size : 15px;
+$font-size: 15px;
 #posts-list-container {
-    ul{
-        padding: 0%;
-        li{
-            list-style-type: none;
-            padding-top: 10px;
-            .avatar-post{
-                display: flex;
-                justify-content: space-between;
-                .user-avatar{
-                    height: 100%;
-                    width: 10%;
-                    .avatar{
-                        margin: auto;
-                        width: calc(2.8 * $font-size);
-                        height: calc(2.8 * $font-size);
-                        border-radius: 50%;
-                        a img{
-                            max-width: 100%;
-                            max-height: 100%;
-                            border-radius: 50%;
-                        }
-                    }
-
-                }
-                .post-content-container{
-                    width: 85%;
-                    div{
-                        width: 100%;
-
-                        .post-user-delete{
-                            width: 100%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-
-
-                            .user-name{
-                                font-size: 0.9rem;
-                                font-weight: 900;
-                                margin: 0%;
-                                margin-bottom: 5px;
-                            }
-                            button{
-                                padding: 0.4em;
-                                border: 1px solid rgb(237, 196, 146);
-                                background-color: antiquewhite;
-                                &:hover{
-                                    background-color: rgb(223, 133, 133);
-
-                                    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-                                }
-                                .delete-post-button{
-                                    text-decoration: none;
-                                    color: black;
-                                    &:hover{
-                                        color: white;
-                                    }
-                                }
-                            }
-
-                        }
-                        .post-content{
-                            margin: 0%;
-                            margin-bottom: 5px;
-                            font-size: 1.2rem;
-                        }
-
-                    }
-                    
-
-                }
+  ul {
+    padding: 0%;
+    li {
+      list-style-type: none;
+      padding-top: 10px;
+      .avatar-post {
+        display: flex;
+        justify-content: space-between;
+        .user-avatar {
+          height: 100%;
+          width: 10%;
+          .avatar {
+            margin: auto;
+            width: calc(2.8 * $font-size);
+            height: calc(2.8 * $font-size);
+            border-radius: 50%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+              0 3px 6px rgba(0, 0, 0, 0.23);
+            a img {
+              max-width: 100%;
+              max-height: 100%;
+              border-radius: 50%;
             }
-        }   
+          }
+        }
+        .post-content-container {
+          width: 85%;
+          div {
+            width: 100%;
+
+            .post-user-delete {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              .user-name {
+                font-size: 0.9rem;
+                font-weight: 900;
+                margin: 0%;
+                margin-bottom: 5px;
+              }
+              button {
+                padding: 0.4em;
+                border: 1px solid rgb(237, 196, 146);
+                background-color: antiquewhite;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+                  0 3px 6px rgba(0, 0, 0, 0.23);
+                &:hover {
+                  background-color: rgb(223, 133, 133);
+                }
+                .delete-post-button {
+                  text-decoration: none;
+                  color: black;
+                  &:hover {
+                    color: white;
+                  }
+                }
+              }
+            }
+            .post-content {
+              margin: 0%;
+              margin-bottom: 5px;
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
     }
+  }
 }
-.liked{
-    background-color: blue;
-    a{
-        color: white;
-    }
+.liked {
+  background-color: blue;
+  a {
+    color: white;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-
 }

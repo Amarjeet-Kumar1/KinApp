@@ -1,20 +1,17 @@
-body{
-    
-    margin: 0%;
-    font-family: 'Open Sans', sans-serif;
-   
-    #layout-main{
-        
-        width: 60vw;
-        margin: auto;
-        margin-top: 8vh;
-        border: 1px solid lightgray;
-    }
-    
+body {
+  margin: 0%;
+  font-family: 'Open Sans', sans-serif;
+
+  #layout-main {
+    width: 60vw;
+    margin: auto;
+    margin-top: 8vh;
+    border: 1px solid lightgray;
+  }
 }
+
 @media only screen and (max-width: 768px) {
-   
-    #layout-main{
-        width: 100vw !important;
-    }
+  #layout-main {
+    width: 100vw !important;
+  }
 }
