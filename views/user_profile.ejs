@@ -1,59 +1,101 @@
-<link rel="stylesheet" href="/css/post.css">
-<link rel="stylesheet" href="/css/comment.css">
+<link rel="stylesheet" href="/css/post.css" />
+<link rel="stylesheet" href="/css/comment.css" />
 <section id="user-profile">
-    <div id="user-avatar">
-        <img id="user-avatar-img" src="<%= profile_user.avatar %>"  alt="<%=profile_user.name%>" width="100">
-    </div>
-    <div id="user-details">
-        <p><%= profile_user.name %></p>
-        <p><%= profile_user.email %></p>
-        <% if(profile_user.id == locals.user.id){%>
-            <button id="edit-profile">Edit Profile</button>
-        <%} else if(receiver){%>
-                    <%if(!receiver.accepted){%>
-                        <button><a href="/users/friendship/cancel-request/?id=<%=receiver._id%>">Cancel Request</a></button>
-                    <%} else {%>
-                        <button><a href="/users/friendship/remove-friend/?id=<%=receiver._id%>">Remove</a></button>
-                    <%}%>
-        <%} else if(sender ){ %>
-                    <%if(!sender.accepted){%>
-                        <button><a href="/users/friendship/accept-request/?id=<%=sender._id%>">Accept Request</a></button>
-                        <button><a href="/users/friendship/cancel-request/?id=<%=sender._id%>">Cancel Request</a></button>
+  <div id="user-avatar">
+    <img
+      id="user-avatar-img"
+      src="<%= profile_user.avatar %>"
+      alt="<%=profile_user.name%>"
+      width="100"
+    />
+  </div>
+  <div id="user-details">
+    <p><%= profile_user.name %></p>
+    <p><%= profile_user.email %></p>
+    <% if(profile_user.id == locals.user.id){%>
+    <button id="edit-profile">Edit Profile</button>
+    <%} else if(receiver){%> <%if(!receiver.accepted){%>
+    <button>
+      <a href="/users/friendship/cancel-request/?id=<%=receiver._id%>"
+        >Cancel Request</a
+      >
+    </button>
+    <%} else {%>
+    <button>
+      <a href="/users/friendship/remove-friend/?id=<%=receiver._id%>">Remove</a>
+    </button>
+    <%}%> <%} else if(sender ){ %> <%if(!sender.accepted){%>
+    <button>
+      <a href="/users/friendship/accept-request/?id=<%=sender._id%>"
+        >Accept Request</a
+      >
+    </button>
+    <button>
+      <a href="/users/friendship/cancel-request/?id=<%=sender._id%>"
+        >Cancel Request</a
+      >
+    </button>
 
-                    <%} else {%>
-                        <button><a href="/users/friendship/remove-friend/?id=<%=sender._id%>">Remove</a></button>
-                    <%}%>
-        <%} else {%>
-                <button><a href="/users/friendship/send-request/?to=<%=profile_user.id%>">Send Request</a></button>
-            <%}%>
-    </div>
-    
-    <div id="edit-form">
-        <% if(profile_user.id == locals.user.id){%>
-        <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="post" >
-            <input type="text" name="name" id="name" placeholder="Your Name" value="<%=profile_user.name%>" required>
-            <input type="email" name="email" id="email" placeholder="Your Email" value="<%=profile_user.email%>" required>
-            
-            <input type="file" name="avatar" id="avatar" placeholder="Profile Picture">
-            <input type="submit" value="Update">
-            <button id="cancel-button">Cancel</button>
-        </form>
-        <%} else {%>
-            <p>Unautherized</p>
-            <%}%>
-    </div>
+    <%} else {%>
+    <button>
+      <a href="/users/friendship/remove-friend/?id=<%=sender._id%>">Remove</a>
+    </button>
+    <%}%> <%} else {%>
+    <button>
+      <a href="/users/friendship/send-request/?to=<%=profile_user.id%>"
+        >Send Request</a
+      >
+    </button>
+    <%}%>
+  </div>
 
+  <div id="edit-form">
+    <% if(profile_user.id == locals.user.id){%>
+    <form
+      action="/users/update/<%= profile_user.id %>"
+      enctype="multipart/form-data"
+      method="post"
+    >
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Your Name"
+        value="<%=profile_user.name%>"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Your Email"
+        value="<%=profile_user.email%>"
+        required
+      />
+
+      <input
+        type="file"
+        name="avatar"
+        id="avatar"
+        accept=".jpg,.jpeg,.png"
+        placeholder="Profile Picture"
+      />
+      <input type="submit" value="Update" />
+      <button id="cancel-button">Cancel</button>
+    </form>
+    <%} else {%>
+    <p>Unautherized</p>
+    <%}%>
+  </div>
 </section>
-<hr>
+<hr />
 <section id="recent-post">
-    <h3>Recent Posts</h3>
-    <div id="posts-list-container">
-        <ul>
-            <%for( post of profile_user.posts){ %>
-                <%- include('./partials/_post.ejs'); %>
-                
-                  <%}%>
-        </ul>
-      </div>
+  <h3>Recent Posts</h3>
+  <div id="posts-list-container">
+    <ul>
+      <%for( post of profile_user.posts){ %> <%-
+      include('./partials/_post.ejs'); %> <%}%>
+    </ul>
+  </div>
 </section>
 <script src="/js/users_profile.js"></script>
