@@ -81,11 +81,13 @@ module.exports.update = async function (req, res) {
 
         if (req.file) {
           if (user.avatar && !user.avatar.includes('default_avatar.jpg')) {
-            fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+            fs.unlinkSync(
+              path.normalize(path.join(__dirname, '..', user.avatar))
+            );
           }
 
           //store the path of uploaded file into the avatar field of user
-          user.avatar = path.join(User.avatarPath, req.file.filename);
+          user.avatar = path.posix.join(User.avatarPath, req.file.filename);
         }
         user.save();
         req.flash('success', 'Profile Updated!!');
