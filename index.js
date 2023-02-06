@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 const expressLayouts = require('express-ejs-layouts');
-const db = require('./config/mongoose');
 
 const session = require('express-session');
 const passport = require('passport');
@@ -20,6 +19,7 @@ const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 
 const path = require('path');
+const { default: mongoose } = require('mongoose');
 
 app.use(
   sassMiddleware({
@@ -88,5 +88,27 @@ app.use(customMware.setFlash);
 
 //use express router after passport
 app.use('/', require('./routes'));
+const connectionParams = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+mongoose.set('strictQuery', true);
 
-module.exports = app;
+mongoose
+  .connect(env.db_url, connectionParams)
+  .then(() => {
+    console.log('Connected to the database ');
+    const httpserver = app.listen(port, function (err) {
+      if (err) {
+        console.log(`Error in running the server :${err}`);
+      }
+
+      console.log(`Server is running on port: ${port}`);
+    });
+    const chatSockets = require('./config/chat_sockets').chatSockets(
+      httpserver
+    );
+  })
+  .catch((err) => {
+    console.error(`Error connecting to the database. ${err}`);
+  });
