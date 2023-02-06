@@ -88,6 +88,8 @@ app.use(customMware.setFlash);
 
 //use express router after passport
 app.use('/', require('./routes'));
+
+const port = process.env.PORT || 8000;
 const connectionParams = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
